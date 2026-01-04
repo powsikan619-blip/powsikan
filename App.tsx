@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AppView } from './types';
 import Layout from './components/Layout';
 import StudyNotes from './components/StudyNotes';
@@ -26,15 +27,18 @@ const App: React.FC = () => {
   }
 
   return (
-    <Layout 
-      activeView={view} 
-      onNavigate={setView}
-      onSignOut={handleSignOut}
-    >
-      {view === 'study' && <StudyNotes />}
-      {view === 'quiz' && <Quiz />}
-      {view === 'planner' && <Planner />}
-    </Layout>
+    <>
+      <Layout 
+        activeView={view} 
+        onNavigate={setView}
+        onSignOut={handleSignOut}
+      >
+        {view === 'study' && <StudyNotes />}
+        {view === 'quiz' && <Quiz />}
+        {view === 'planner' && <Planner />}
+      </Layout>
+      <SpeedInsights />
+    </>
   );
 };
 
